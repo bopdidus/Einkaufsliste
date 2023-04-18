@@ -1,0 +1,18 @@
+ul{
+    list-style: none;
+    display: flex;
+}
+ul li{
+    padding: 7px ;
+   
+}
+a{ text-decoration: none;}
+ul li:hover{
+    background-color: orange;
+}
+ul li:hover a{
+    background-color: orange;
+    color: white !important;
+    font-weight: 500;
+    font-style: italic;
+}

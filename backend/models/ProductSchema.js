@@ -12,8 +12,7 @@ let ProductSchema = new mongoose.Schema({
         required: true,
         unique:true
     },
-    price: Number,
-    description:String
+    amount:Number,
 })
 
 module.exports = mongoose.model("ProductModel", ProductSchema)

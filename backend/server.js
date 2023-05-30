@@ -36,6 +36,7 @@ app.post('/api/', (req, res)=>{
     else{
         console.log(req.body)
         const newProduct = new ProductModel(req.body)
+        newProduct.amount =1;
         newProduct.save().then(doc=>{
             if(!doc || doc.length === 0)
                 return res.status(500).send(doc)
@@ -49,13 +50,14 @@ app.post('/api/', (req, res)=>{
     
 })
 app.put('/api/', (req, res)=>{
-    if(req.body.name == undefined || req.body.name == null || req.body.newName == undefined || req.body.newName == null)
+    console.log(req.body)
+    if((req.body.name == undefined || req.body.name == null ) && (req.body.newName == undefined || req.body.newName == null))
     {
         res.status(400).send("Bad request")
     }
     else{
         ProductModel.findOneAndUpdate({"name": req.body.name},{"name": (req.body.newName)?req.body.newName: req.body.name, 
-        "price": req.body.price, "description": req.body.description}).then(doc=>{
+         "amount": req.body.amount}).then(doc=>{
             res.status(200).send(doc)
         })
         .catch(err=>{

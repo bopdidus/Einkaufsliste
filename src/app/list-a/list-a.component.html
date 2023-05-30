@@ -1,5 +1,20 @@
-<p>list-a works!</p>
 
-<ul >
-    <li *ngFor="let item of products">{{ item.name}}</li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="input-group mb-3">
+            <input type="text" #productInput class="form-control" placeholder="product name" aria-describedby="button-add" data-bs-them="dark"  />
+            <button class="btn btn-outline-secondary" type="button" id="button-add"  (click)="addProduct(productInput.value)">Add</button>
+        </div>
+    </div>
+    <div class="row">
+        <ul >
+            <li *ngFor="let item of products">
+                <app-product id="{{item._id}}" name="{{item.name}}"  [amount]="item.amount" (productDeleted)="DeleteProduct($event)" (amountChanged)="UpdateProduct($event)"></app-product>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
